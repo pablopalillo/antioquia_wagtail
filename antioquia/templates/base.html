@@ -1,5 +1,4 @@
 {% load static wagtailcore_tags wagtailuserbar %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,8 +33,11 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        {% include "header.html" %}
+
         {% block content %}{% endblock %}
 
+        {% include "footer.html" %}
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/antioquia.js' %}"></script>
 

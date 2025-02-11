@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<section class="banner">
+    <h2>Descubre la belleza de Antioquia</h2>
+    {% image self.image width-600 %}
+    
+</section>
+<section class="content">
+    <article>
+        <h3>{{self.title}}</h3>
+        <p>{{self.body|safe }}</p>
+    </article>
+</section>
+
+{% endblock content %}

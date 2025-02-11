@@ -16,6 +16,17 @@ Delete the line below if you're just getting started and want to remove the welc
 {% comment %}
 Delete the line below if you're just getting started and want to remove the welcome screen!
 {% endcomment %}
-{% include 'home/welcome_page.html' %}
+
+<section class="banner">
+    <h1>
+        <img src="{% static 'images/banner.png'%}" />
+    </h1>
+</section>
+<section class="content">
+    <article>
+        <h3>Explora nuestros destinos</h3>
+        <p>Antioquia te ofrece una variedad de lugares mágicos para visitar...</p>
+    </article>
+</section>
 
 {% endblock content %}
