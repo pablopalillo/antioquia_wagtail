@@ -1,4 +1,8 @@
+{% load wagtailcore_tags navigation_tags %}
 {% load static %}
+{% load i18n %}
+{% get_site_root as site_root %}
+
 <header>
     <a href="/">
         <h1>
@@ -6,12 +10,30 @@
         </h1>
     </a>
     <nav>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="#">Destinos</a></li>
-            <li><a href="#">Eventos</a></li>
-            <li><a href="#">Gastronomía</a></li>
-            <li><a href="#">Contacto</a></li>
+        <ul class="menu">
+            <li><a href="{% pageurl site_root %}">Inicio</a></li>
+            {%comment%}
+                esta publicado y esta marcado como aparecer en menu
+            {%endcomment%}
+
+            {% for menuitem in site_root.get_children.live.in_menu %}
+                <li>
+                    <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                </li>
+            {% endfor %}
+
+            <li>[
+                {% for language_code, language_name in LANGUAGES %}
+                {% get_language_info for language_code as lang %}
+
+                {% language language_code %}
+                    <a href="{% pageurl page.localized %}" rel="alternate" hreflang="{{ language_code }}">
+                        {{ lang.name_local }}
+                    </a>
+                {% endlanguage %}
+                {% endfor %}
+                ]
+            </li>
         </ul>
     </nav>
 </header>
